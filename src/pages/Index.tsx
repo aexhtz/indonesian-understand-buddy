@@ -1,13 +1,25 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import { AppSidebar } from "@/components/AppSidebar";
+import { TaskList } from "@/components/TaskList";
+import { Menu } from "lucide-react";
 
 const Index = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
+    <SidebarProvider defaultOpen={true}>
+      <div className="min-h-screen flex w-full bg-background">
+        <AppSidebar />
+        <main className="flex-1 flex flex-col">
+          <header className="h-14 flex items-center px-4 border-b border-border bg-background">
+            <SidebarTrigger className="text-muted-foreground hover:text-foreground">
+              <Menu className="h-5 w-5" />
+            </SidebarTrigger>
+          </header>
+          <div className="flex-1 overflow-hidden">
+            <TaskList />
+          </div>
+        </main>
       </div>
-    </div>
+    </SidebarProvider>
   );
 };
 
